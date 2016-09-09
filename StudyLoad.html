@@ -1,0 +1,71 @@
+<html>
+<head>
+	<meta author = "Kirster Kyle O. Quinio">
+	<title>Study Load</title>
+</head>
+<body>
+ 	<form id="loadform">
+	    <input type="text" id="studentName" placeholder="Student Name"required><br>
+	    <input type="text" id="studentId" placeholder="Student ID"required><br>
+	    <input type="submit" value="Proceed to Choosing of Subject">
+ 	</form>
+ 	<form id = "subjectform">
+ 		Choose Subjects
+ 		<select id = "subject" placeholder = "Select Subject">
+			<option value = "0">Multimedia Systems</option>
+			<option value = "1">Web Programming</option>
+			<option value = "2">Ethics for IT Professionals</option>
+		</select>
+		Choose Time
+		 <select id = "time" placeholder = "Select Time">
+			<option value = "0">8:00 AM - 12:00 NN </option>
+			<option value = "1">12:00 NN - 4:00 PM</option>
+			<option value = "2">4:00 PM - 8:00 PM </option>
+		</select>
+		<input type="submit" value="Add Subject">
+ 	</form>
+ 	<input type="button" value="Generate Study Load" id="submit-form">
+ 	<div id = "studyLoadUI">
+ 	</div>
+   <script type="text/javascript">
+
+   		document.getElementById('subjectform').style.display = 'none';
+   		document.getElementById('submit-form').disabled = true;
+
+   		var Subjects = {};
+   		count = 0;
+
+		var studentForm= document.getElementById('loadform');
+		studentForm.addEventListener('submit',generateStudentObj);
+		var subjectForm= document.getElementById('subjectform');
+		subjectform.addEventListener('submit',generateSubjectObj);
+
+		function generateStudentObj()
+		{
+			event.preventDefault();
+			document.getElementById('studentName').disabled = true;
+			document.getElementById('studentId').disabled = true;
+			document.getElementById('subjectform').style.display = 'block';
+			var sName = document.getElementById('studentName').value;
+			var sId = document.getElementById('studentId').value;
+
+			var Student = { 
+				studentName: sName,
+				studentId: sId,
+			};
+			console.log(Student);
+
+		}
+
+		function generateSubjectObj()
+		{
+			event.preventDefault();
+			var subj  = document.getElementById('subject').value;
+			var time = document.getElementById('time').value;
+			if(Subjects[count])
+				count++;
+			console.log(subj);
+		}
+   </script> 	
+</body>
+<html>
